@@ -9,3 +9,10 @@ app.get('/', (req:any, res:any) => {
 app.listen(port, () => {
   console.log(`Rodando na porta ${port}`);
 })
+
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+
