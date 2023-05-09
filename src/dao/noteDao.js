@@ -2,7 +2,7 @@ const { getDateToday } = require("../utils/date");
 module.exports = {
     getNotes: (sql) => {
         return new Promise((resolve, reject) => {
-            sql.query(`SELECT description FROM notes`, (error, result) => {
+            sql.query(`SELECT * FROM notes`, (error, result) => {
                 if (error) {
                     reject(error);
                 } else {
@@ -13,8 +13,7 @@ module.exports = {
     },
     insertNotes: (sql,values) => {
         return new Promise((resolve, reject) => {
-            sql.query(
-                `INSERT INTO notes (description) VALUES (?)`, [values],  (error, result) => {
+            sql.query(`INSERT INTO notes (description) VALUES (?)`,  (error, result) => {
                     if (error) {
                         reject(error);
                     } else {
@@ -24,4 +23,16 @@ module.exports = {
             );
         });
     },
+    deleteNotes: (sql, id) => {
+        return new Promise((resolve, reject) => {
+            sql.query(`DELETE FROM notes WHERE id = ?`, [id], (error, result) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(result);
+                    }
+                }
+            );
+        });
+    }
 };

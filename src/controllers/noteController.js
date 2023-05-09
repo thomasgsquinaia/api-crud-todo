@@ -43,15 +43,17 @@ module.exports = {
     //         throw error;
     //     }
     // },
-    // deleteNotes: async (req, res, next) => {
-    //     let sql;
-    //     try {
-    //         sql = await sqlFunctions.getConnection();
-    //         const notes = await dao.getNotes(sql);
-    //     } catch (error) {
-    //         if (sql) {
-    //         }
-    //         throw error;
-    //     }
-    // },
+    deleteNotes: async (req, res, next) => {
+        let sql;
+        try {
+            sql = await sqlFunctions.getConnection();
+            const id = req.params.id
+            const notes = await dao.deleteNotes(sql, id);
+            messages.success(res, notes)
+        } catch (error) {
+            if (sql) {
+            }
+            throw error;
+        }
+    },
 };
