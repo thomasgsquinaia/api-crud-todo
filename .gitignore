@@ -1,1 +1,21 @@
-node_modules/
+# Arquivos e diretórios específicos
+/node_modules
+/dist
+/.env
+
+# Arquivos de log
+*.log
+npm-debug.log*
+
+# Arquivos temporários
+*.swp
+*.bak
+*.tmp
+
+# Outros arquivos compilados
+*.pyc
+*.class
+
+# Outros arquivos e diretórios
+.DS_Store
+Thumbs.db
