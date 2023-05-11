@@ -7,7 +7,7 @@ app.use(bodyparser.json({ limit: "50mb" }));
 const notes = require("./routes/noteRoute");
 
 //NOT-AUTHORIZATION
-app.use("/notes", notes);
+app.use("/", notes);
 
 app.listen(port, () => {
     console.log(`Rodando na porta ${port}`);
@@ -16,6 +16,13 @@ app.listen(port, () => {
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'HEAD, OPTIONS, GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, contentType, Content-Type, Accept, Authorization');
     next();
 });
 
