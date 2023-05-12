@@ -20,8 +20,8 @@ module.exports = {
         try {
             sql = await sqlFunctions.getConnection();
             const values = req.body.description;
-            const notesInsert = await dao.insertNotes(sql, values);
-            return res.status(200).json(notesInsert);
+            const notesRes = await dao.insertNotes(sql, values);
+            return res.status(201).json(notesRes);
         } catch (error) {
             if (sql) {
                 sql.release();

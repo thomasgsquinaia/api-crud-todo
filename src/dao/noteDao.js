@@ -14,7 +14,7 @@ module.exports = {
     insertNotes: (sql, values) => {
         return new Promise((resolve, reject) => {
             sql.query(
-                "INSERT INTO notes (`description`) VALUES (?)",
+                "INSERT INTO notes (`description`) VALUES (?); ",
                 [values],
                 (error, result) => {
                     if (error) {
@@ -28,7 +28,10 @@ module.exports = {
     },
     updateNotes: (sql, body) => {
         return new Promise((resolve, reject) => {
-            sql.query(`UPDATE notes SET updated=CURRENT_TIMESTAMP, description=? WHERE id = ?`,[body, body.id], (error, result) => {
+            sql.query(
+                `UPDATE notes SET updated=CURRENT_TIMESTAMP, description=? WHERE id = ?`,
+                [body, body.id],
+                (error, result) => {
                     if (error) {
                         reject(error);
                     } else {
