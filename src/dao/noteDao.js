@@ -43,7 +43,7 @@ module.exports = {
     },
     deleteNotes: (sql, id) => {
         return new Promise((resolve, reject) => {
-            sql.query(`DELETE FROM notes WHERE id = ?`, id, (error, result) => {
+            sql.query("DELETE FROM notes WHERE id = ?", id, (error, result) => {
                 if (error) {
                     reject(error);
                 } else {
